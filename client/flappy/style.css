@@ -14,6 +14,7 @@
 
 .ground {
     background-color: brown;
+    background-size: 100% 100%;
     width: 500px;
     height: 150px;
     position: absolute;
@@ -21,21 +22,22 @@
 }
 
 .bird {
-    background-color: yellow;
+    background-image: url(image/cat.png);
+    background-size: 100% 130%;
     position: absolute;
     width: 60px;
     height: 45px;
 }
 
 .obstacle {
-    background-color: green;
+    background-image: url(image/pipe.png);
     width: 60px;
     height: 300px;
     position: absolute;
 }
 
 .topObstacle {
-    background-color: green;
+    background-image: url(image/pipe.png);
     transform: rotate(180deg);
     width: 60px;
     height: 300px;
