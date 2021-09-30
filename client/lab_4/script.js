@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
   let slidePosition = 0;
-  const slides = document.getElementsByClassName('carousel-item');
+  const slides = document.querySelectorAll('.carousel-item');
   const totalSlides = slides.length;
   console.log("js loaded /n")
-  console.log(document.getElementById('carousel-button-next'));
-  document.getElementById('carousel-button-next').addEventListener("click", function () {
+  console.log(document.querySelector('#carousel-button-next'));
+  document.querySelector('#carousel-button-next').addEventListener("click", function () {
     console.log("next button clicked");
     moveToNextSlide();
   });
 
   document.
-    getElementById('carousel-button-prev').addEventListener("click", function () {
+    querySelector('#carousel-button-prev').addEventListener("click", function () {
       console.log("prev button clicked");
       moveToPrevSlide();
     });
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       slide.classList.remove('carousel-item-visible');
       slide.classList.add('carousel-item-hidden');
     }
-    
+
     slides[slidePosition].classList.remove('carousel-item-hidden');
     slides[slidePosition].classList.add('carousel-item-visible');
     
