@@ -1,10 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
+async function windowActions() {
   const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-  const arr = [];
 
-  fetch(endpoint)
-    .then((blob) => blob.json())
-    .then((data) => arr.push(...data));
+
+  const request = await fetch(endpoint);
+  const arr = await request.json();
 
   function findMatches(wordToMatch, arr) {
     return arr.filter((restaurant) => {
@@ -13,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  function displayMatches() {
-    const matchArray = findMatches(this.value, arr);
+  function displayMatches(event) {
+    const matchArray = findMatches(event.target.value, arr);
     const html = matchArray.map((restaurant) => ` <li> <span class="name"?>City:${restaurant.city}, Zip Code:${restaurant.zip}</span></li>`);
     suggestions.innerHTML = html;
   }
@@ -22,5 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.querySelector('.search');
   const suggestions = document.querySelector('.suggestions');
 
-  searchInput.addEventListener('keyup', displayMatches);
-});
+  searchInput.addEventListener('keyup', (evt) => { displayMatches(evt) });
+}
+
+window.onload = windowActions;
